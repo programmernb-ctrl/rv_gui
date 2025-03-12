@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["ES2022"],
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+
+    "strict": true,
+    "strictNullChecks": true,
+    "noEmit": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": false,
+    "noImplicitReturns": true,
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "strictBindCallApply": true,
+    "useUnknownInCatchVariables": true,
+    "types": ["@types/node", "@citizenfx/client", "@citizenfx/server"],
+
+    "paths": {
+      "@/*": ["./src"]
+    },
+  },
+  "exclude": ["./node_modules"]
+}
