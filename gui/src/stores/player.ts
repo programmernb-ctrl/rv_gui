@@ -1,20 +1,15 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-
-interface P {
-   id: number;
-   name: string;
-   coords: number[];
-}
+import { PlayerData } from '../types/PlayerData';
 
 export const usePlayerStore = defineStore('user', () => {
-   const player = ref<P>({
+   const player = ref<PlayerData>({
       name: '',
       id: 0,
       coords: [0, 0, 0]
    });
 
-   const setPlayer = (newPlayer: P) => {
+   const setPlayer = (newPlayer: PlayerData) => {
       player.value = newPlayer;
    };
 

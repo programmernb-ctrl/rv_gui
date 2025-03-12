@@ -1,20 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, computed } from 'vue';
+import { PlayerData } from '../types/PlayerData';
+import { DResponse } from '../types/DResponse';
 
-interface DResponse {
-   data: {
-      id: number,
-      name: string,
-      coords: number[]
-   };
-   isError: boolean;
-}
-
-const playerData = ref<{
-   id: number;
-   name: string;
-   coords: number[];
-}>();
+const playerData = ref<PlayerData>();
 
 const formattedPlayer = computed(() => {
    if (!playerData.value) return '';
