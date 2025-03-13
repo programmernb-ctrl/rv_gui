@@ -1,6 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import MainView from '../views/MainView.vue';
-import TestView from '../views/TestView.vue';
 
 const routes = [
     {
@@ -11,7 +10,7 @@ const routes = [
     {
         path: '/test',
         name: 'test',
-        component: TestView,
+        component: () => import ('../views/TestView.vue'), // Dynamic Import
     },
 ];
 
