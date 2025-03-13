@@ -1,7 +1,7 @@
 # (WIP) rv_gui
 
 > [!TIP]
-> Want to join a great upcoming dev community make sure you don't miss to join our [Discord](https://discord.gg/3FjtbxSMNT) :)
+> Want to join a great upcoming dev community? Make sure you don't miss to join our [Discord](https://discord.gg/3FjtbxSMNT) :)!
 
 ## How to build?
 
