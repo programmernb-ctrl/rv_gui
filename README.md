@@ -7,7 +7,7 @@
 
 1. Go to the root directory of the resource
 
-2. Type following commands seperatly in the terminal
+2. Use the command that you need
 
 ```bash
 pnpm build - build server files
