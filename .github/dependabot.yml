@@ -1,0 +1,11 @@
+## 
+version: 2
+updates:
+  - package-ecosystem: "npm" # See documentation for possible values
+    directories:
+    - "/gui"
+    - "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "18:00"
