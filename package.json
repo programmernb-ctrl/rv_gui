@@ -29,7 +29,7 @@
     "dependencies": {
         "@nativewrappers/fivem": "latest",
         "@nativewrappers/server": "latest",
-        "@overextended/ox_lib": "^3.29.0"
+        "@overextended/ox_lib": "^3.30.5"
     },
     "prettier": {
         "printWidth": 120,
