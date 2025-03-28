@@ -25,11 +25,11 @@ importers:
         specifier: ^9.22.0
         version: 9.22.0
       '@types/node':
-        specifier: ^22.13.10
-        version: 22.13.10
+        specifier: ^22.13.14
+        version: 22.13.14
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
-        version: 5.2.1(vite@6.2.3(@types/node@22.13.10)(jiti@1.21.7)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
+        version: 5.2.1(vite@6.2.3(@types/node@22.13.14)(jiti@1.21.7)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.5.3)
@@ -56,7 +56,7 @@ importers:
         version: 8.26.0(eslint@9.22.0(jiti@1.21.7))(typescript@5.8.2)
       vite:
         specifier: ^6.2.3
-        version: 6.2.3(@types/node@22.13.10)(jiti@1.21.7)(yaml@2.7.0)
+        version: 6.2.3(@types/node@22.13.14)(jiti@1.21.7)(yaml@2.7.0)
 
 packages:
 
@@ -433,8 +433,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.13.10':
-    resolution: {integrity: sha512-I6LPUvlRH+O6VRUqYOcMudhaIdUVWfsjnZavnsraHvpBwaEyMN29ry+0UVJhImYL16xsscu0aske3yA+uPOWfw==}
+  '@types/node@22.13.14':
+    resolution: {integrity: sha512-Zs/Ollc1SJ8nKUAgc7ivOEdIBM8JAKgrqqUYi2J997JuKO7/tpQC+WCetQ1sypiKCQWHdvdg9wBNpUPEWZae7w==}
 
   '@typescript-eslint/eslint-plugin@8.26.0':
     resolution: {integrity: sha512-cLr1J6pe56zjKYajK6SSSre6nl1Gj6xDp1TY0trpgPzjVbgDwd09v2Ws37LABxzkicmUjhEeg/fAUjPJJB1v5Q==}
@@ -1686,7 +1686,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.13.10':
+  '@types/node@22.13.14':
     dependencies:
       undici-types: 6.20.0
 
@@ -1767,9 +1767,9 @@ snapshots:
       '@typescript-eslint/types': 8.26.0
       eslint-visitor-keys: 4.2.0
 
-  '@vitejs/plugin-vue@5.2.1(vite@6.2.3(@types/node@22.13.10)(jiti@1.21.7)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))':
+  '@vitejs/plugin-vue@5.2.1(vite@6.2.3(@types/node@22.13.14)(jiti@1.21.7)(yaml@2.7.0))(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      vite: 6.2.3(@types/node@22.13.10)(jiti@1.21.7)(yaml@2.7.0)
+      vite: 6.2.3(@types/node@22.13.14)(jiti@1.21.7)(yaml@2.7.0)
       vue: 3.5.13(typescript@5.8.2)
 
   '@vue/compiler-core@3.5.13':
@@ -2665,13 +2665,13 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite@6.2.3(@types/node@22.13.10)(jiti@1.21.7)(yaml@2.7.0):
+  vite@6.2.3(@types/node@22.13.14)(jiti@1.21.7)(yaml@2.7.0):
     dependencies:
       esbuild: 0.25.1
       postcss: 8.5.3
       rollup: 4.37.0
     optionalDependencies:
-      '@types/node': 22.13.10
+      '@types/node': 22.13.14
       fsevents: 2.3.3
       jiti: 1.21.7
       yaml: 2.7.0
