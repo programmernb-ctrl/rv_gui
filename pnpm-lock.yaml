@@ -25,8 +25,8 @@ importers:
         specifier: latest
         version: 2.0.13890-1
       '@types/node':
-        specifier: ^22.13.10
-        version: 22.13.10
+        specifier: ^22.13.14
+        version: 22.13.14
       concurrently:
         specifier: ^9.1.2
         version: 9.1.2
@@ -225,8 +225,8 @@ packages:
   '@overextended/ox_lib@3.30.5':
     resolution: {integrity: sha512-aXPtICx4UGEiOmp8+DS5AW1bF2hE7F0Ae4ssgpsQOv+4eUv+UWcAyh0NYE7RQ3lXWV58US4cyPVYl4DWdkGfAA==}
 
-  '@types/node@22.13.10':
-    resolution: {integrity: sha512-I6LPUvlRH+O6VRUqYOcMudhaIdUVWfsjnZavnsraHvpBwaEyMN29ry+0UVJhImYL16xsscu0aske3yA+uPOWfw==}
+  '@types/node@22.13.14':
+    resolution: {integrity: sha512-Zs/Ollc1SJ8nKUAgc7ivOEdIBM8JAKgrqqUYi2J997JuKO7/tpQC+WCetQ1sypiKCQWHdvdg9wBNpUPEWZae7w==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -516,7 +516,7 @@ snapshots:
       fast-printf: 1.6.10
       typescript: 5.8.2
 
-  '@types/node@22.13.10':
+  '@types/node@22.13.14':
     dependencies:
       undici-types: 6.20.0
 
