@@ -3,6 +3,9 @@
 > [!TIP]
 > Want to join a great upcoming dev community? Make sure you don't miss to join our [Discord](https://discord.gg/3FjtbxSMNT) :)!
 
+> [!IMPORTANT]
+> [Documentation](https://revolution-4.gitbook.io/revolution-or-docs/resources/rv_gui) can be found here. Just click the link
+
 ## How to build?
 
 1. Go to the root directory of the resource
