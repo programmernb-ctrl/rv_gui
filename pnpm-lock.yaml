@@ -15,8 +15,8 @@ importers:
         specifier: latest
         version: 0.0.92
       '@overextended/ox_lib':
-        specifier: ^3.30.5
-        version: 3.30.5
+        specifier: ^3.30.6
+        version: 3.30.6
     devDependencies:
       '@citizenfx/client':
         specifier: latest
@@ -222,8 +222,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@overextended/ox_lib@3.30.5':
-    resolution: {integrity: sha512-aXPtICx4UGEiOmp8+DS5AW1bF2hE7F0Ae4ssgpsQOv+4eUv+UWcAyh0NYE7RQ3lXWV58US4cyPVYl4DWdkGfAA==}
+  '@overextended/ox_lib@3.30.6':
+    resolution: {integrity: sha512-yy4679riXT/cE42sWx6rrcgAQ2RJxo+sU3lFcdiqj+rivxYYRcQZXo5OIw0E1GroloaiIKwZA2F4d9wv1fW78A==}
 
   '@types/node@22.13.10':
     resolution: {integrity: sha512-I6LPUvlRH+O6VRUqYOcMudhaIdUVWfsjnZavnsraHvpBwaEyMN29ry+0UVJhImYL16xsscu0aske3yA+uPOWfw==}
@@ -509,7 +509,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@overextended/ox_lib@3.30.5':
+  '@overextended/ox_lib@3.30.6':
     dependencies:
       '@nativewrappers/client': 1.7.33
       csstype: 3.1.3
