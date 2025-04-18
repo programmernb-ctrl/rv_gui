@@ -10,20 +10,20 @@ importers:
     dependencies:
       '@nativewrappers/fivem':
         specifier: latest
-        version: 0.0.92
+        version: 0.0.101
       '@nativewrappers/server':
         specifier: latest
-        version: 0.0.92
+        version: 0.0.101
       '@overextended/ox_lib':
         specifier: ^3.30.6
         version: 3.30.6
     devDependencies:
       '@citizenfx/client':
         specifier: latest
-        version: 2.0.14033-1
+        version: 2.0.14318-1
       '@citizenfx/server':
         specifier: latest
-        version: 2.0.14033-1
+        version: 2.0.14318-1
       '@types/node':
         specifier: ^22.13.10
         version: 22.13.10
@@ -45,11 +45,11 @@ importers:
 
 packages:
 
-  '@citizenfx/client@2.0.14033-1':
-    resolution: {integrity: sha512-g7dig/zD62Gmpja4y/kKR4dTFUPRrWuxv+2yJX7y1o5euDQGPQ7sdOEjvR3bm0OQ9LmRpeMbtZj8cMH0RuybOA==}
+  '@citizenfx/client@2.0.14318-1':
+    resolution: {integrity: sha512-8qkXyJIOmOqFR3Bm/P99p7H49wmCNQqOtr2YGmhc7FlznirUQC5qx7Qauuxnl8B7Sj/6RQGOY4t1LIA3U87gmA==}
 
-  '@citizenfx/server@2.0.14033-1':
-    resolution: {integrity: sha512-Kezv7RWGzwq7OsH0aBH3wyb7+/3bXRkJlpI3jkShn80c6T0tIrpjJw3zigwu41BIK6Qd5/UUELpi6tXiRmGdlQ==}
+  '@citizenfx/server@2.0.14318-1':
+    resolution: {integrity: sha512-k8kvAOcekV/omKsf5oYISRpDawi5A7NOv46U7Y2oYaq2XHIfoJok143cb49MHO4IOaXTU2y/QJw2ADzpX+ESfw==}
 
   '@esbuild/aix-ppc64@0.25.0':
     resolution: {integrity: sha512-O7vun9Sf8DFjH2UtqK8Ku3LkquL9SZL8OLY1T5NZkA34+wG3OQF7cl4Ql8vdNzM6fzBbYfLaiRLIOZ+2FOCgBQ==}
@@ -204,11 +204,11 @@ packages:
   '@nativewrappers/client@1.7.33':
     resolution: {integrity: sha512-phuBBGdDPxZiZyw5CaFs1XWfvllnEtwATMdLaNucwMofVg/O/FjlP1bTUq4SOm4qhSZ4Zdo351ijHzBSIbZs6g==}
 
-  '@nativewrappers/fivem@0.0.92':
-    resolution: {integrity: sha512-o+Fr11YhnEqyiyydr9aure1byn86hwV1sS4Nz1KrjWBzdC82oPt9i3tRoCj6fBJ8XFpv8n9SyPulpwYdKLNIaQ==}
+  '@nativewrappers/fivem@0.0.101':
+    resolution: {integrity: sha512-2hol6/gMCyrcxueKssF51Q4UL9lN0G2dHarwOka8IkXLcundNpOBS9FIoZO0g04m6KJUtFvc4Ds4KIRtIECLlg==}
 
-  '@nativewrappers/server@0.0.92':
-    resolution: {integrity: sha512-Q8WgBwfzfWpy+Ti4DEK93crwKZ3KlwCxXrKhG8KMaWLbvQOgMr74wp4fvLKGjDkpaHvTL0fOq6nGOSIV+gbipQ==}
+  '@nativewrappers/server@0.0.101':
+    resolution: {integrity: sha512-dNXLUDlX9hX8X4chFHO2igRd0gca7odQI+wNVDrde76c/Pj0dt/4L9o+4FYrRh2/IlTN4uPDe+41ouZwKVXDDg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -412,9 +412,9 @@ packages:
 
 snapshots:
 
-  '@citizenfx/client@2.0.14033-1': {}
+  '@citizenfx/client@2.0.14318-1': {}
 
-  '@citizenfx/server@2.0.14033-1': {}
+  '@citizenfx/server@2.0.14318-1': {}
 
   '@esbuild/aix-ppc64@0.25.0':
     optional: true
@@ -493,9 +493,9 @@ snapshots:
 
   '@nativewrappers/client@1.7.33': {}
 
-  '@nativewrappers/fivem@0.0.92': {}
+  '@nativewrappers/fivem@0.0.101': {}
 
-  '@nativewrappers/server@0.0.92': {}
+  '@nativewrappers/server@0.0.101': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
