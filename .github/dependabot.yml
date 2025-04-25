@@ -34,4 +34,4 @@ updates:
     pull-request-branch-name:
       seperator: "-"
     labels:
-      - "dependencies",
+      - "dependencies"
