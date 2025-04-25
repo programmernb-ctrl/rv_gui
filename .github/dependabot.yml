@@ -31,7 +31,5 @@ updates:
           - "eslint*"
           - "vite"
           - "@vitejs/plugin-vue"
-    pull-request-branch-name:
-      seperator: "-"
     labels:
       - "dependencies"
