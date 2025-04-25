@@ -8,4 +8,30 @@ updates:
     schedule:
       interval: "weekly"
       day: "friday"
-      time: "18:00"
+      time: "12:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limt: 3
+    commit-message:
+      prefix: "(deps) "
+    groups:
+      game-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "@citizenfx*"
+          - "@nativewrappers*"
+          - "@overextended/ox_lib"
+      main-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "typescript*"
+          - "esbuild*"
+          - "vue"
+          - "vue-router"
+          - "fast-glob"
+          - "eslint*"
+          - "vite"
+          - "@vitejs/plugin-vue"
+    pull-request-branch-name:
+      seperator: "-"
+    labels:
+      - "dependencies",
