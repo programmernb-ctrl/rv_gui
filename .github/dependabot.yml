@@ -10,7 +10,6 @@ updates:
       day: "friday"
       time: "12:00"
       timezone: "Europe/Berlin"
-    open-pull-requests-limt: 3
     commit-message:
       prefix: "(deps) "
     groups:
