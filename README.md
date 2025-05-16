@@ -13,12 +13,12 @@
 2. Use the command that you need
 
 ```bash
-pnpm build - build server files
-pnpm build:web - build webview
-pnpm watch - watch server files
-pnpm watch:web - watch webview
-pnpm build:dev - build everything
-pnpm dev - watch everyting
+bun run build - build server files
+bun run build:web - build webview
+bun run watch - watch server files
+bun run watch:web - watch webview
+bun run build:dev - build everything
+bun run dev - watch everyting
 ```
 
 ### <ins>Folder Structure<ins>

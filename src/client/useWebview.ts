@@ -1,44 +1,27 @@
-export type PageIndex = "home" | "test" | "hud" | "gas";
-
-type PageList = {
-   [key in PageIndex]: {
-      url: string;
-   }
+interface Pages {
+   [key: string]: string;
 }
 
-const pageList: PageList = {
-   home: {
-      url: "home",
-   },
-   test: {
-      url: "test",
-   },
-   hud: {
-      url: "hud",
-   },
-   gas: {
-      url: "gas",
-   },
-};
-
-interface PageType {
-   url?: string
-}
-interface Page {
-   [key: string]: PageType
+// Define the valid pages -- you can add more pages here!
+// the pages you define here should be registered with the same name as in the gui/src/router.ts
+export const validPages: Pages = {
+   home: "home",
+   test: "test",
+   hud: "hud",
+   gas: "gas",
 }
 
 export const useWebview = () => {
-   let list: Page = pageList;
-   let currentPage: PageIndex | undefined = undefined;
+   let list: Pages = validPages;
+   let currentPage: keyof Pages | undefined = undefined;
    let isFocused: boolean = false;
 
    const getPage = () => {
       return currentPage;
    }
 
-   const setPage = (page: PageIndex) => {
-      if (list[page]) {
+   const setPage = (page: keyof Pages) => {
+      if (page in list) {
          currentPage = page;
 
          Citizen.trace(`^3[rv_gui] Boilerplate^0 :: page is beeing set to: ^5'${currentPage}'^0`);

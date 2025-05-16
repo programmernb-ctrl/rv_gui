@@ -1,11 +1,11 @@
 import './cb';
 import { cache, sleep } from '@communityox/ox_lib';
 import { Ped, Vehicle, VehicleSeat } from '@nativewrappers/fivem';
-import { useWebview, PageIndex } from './useWebview';
+import { useWebview, validPages } from './useWebview';
 
 const webview = useWebview();
 
-onNet('rv_gui:Webview:switch', async (arg: PageIndex, focus?: number) => {
+onNet('rv_gui:Webview:switch', async (arg: keyof typeof validPages, focus?: number) => {
    await sleep(1);
 
    Citizen.trace(`^3[rv_gui] Boilerplate^0 | arguments at webview switch event received ^3{ ${arg}, ${focus} }^0`);
