@@ -1,7 +1,7 @@
 {
     "name": "ts-vue-boilerplate",
     "private": true,
-    "version": "0.0.1",
+    "version": "0.0.2",
     "license": "MIT",
     "type": "module",
     "scripts": {
@@ -29,6 +29,7 @@
         "tailwindcss": "3.4.3",
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.26.0",
-        "vite": "^6.2.3"
+        "vite": "6.2.7",
+        "vite-plugin-vue-devtools": "^7.7.6"
     }
 }

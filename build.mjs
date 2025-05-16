@@ -2,6 +2,7 @@ import esbuild from 'esbuild';
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import chalk from 'chalk';
 
 import pkg from 'fast-glob'; // fast-glob is a CommonJS module?
 const {globSync} = pkg;
@@ -28,6 +29,13 @@ async function buildFiles() {
             entryPoints: globSync('./src/server/index.ts'),
             format: 'cjs',
         },
+        {
+            label: 'common',
+            platform: 'browser',
+            target: ['chrome97'],
+            entryPoints: globSync('./src/common/*.ts'),
+            format: 'iife',
+        }
     ];
 
     for (const ctx of buildContexts) {
@@ -47,14 +55,16 @@ async function buildFiles() {
                 minify: true,
                 minifyWhitespace: true,
                 logLevel: 'info',
+                sourcemap: true,
+                sourcesContent: false,
             });
 
             if (isWatchMode) {
-                console.log(`Watching for changes in ${label}...`);
+                console.log(chalk.yellowBright(`Watching for changes in ${label}...`));
                 await context.watch();
             } else {
                 await context.rebuild();
-                console.log(`Build completed for ${label}`);
+                console.log(chalk.green(`Build completed for ${label}`));
                 await context.dispose();
             }
         } catch (error) {

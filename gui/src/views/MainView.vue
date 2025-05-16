@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import {ref, onMounted, onUnmounted} from 'vue';
 import {useRouter} from 'vue-router';
+import {MessagesEvent} from '../types/MessageEvent'
 import TestComponent from '../components/TestComponent.vue';
 
 const router = useRouter();
 
-const isVisible = ref<boolean>(false);
+const isVisible = ref<boolean | any>(false);
 
-const handleMessage = (event: MessageEvent) => {
+const handleMessage = (event: MessagesEvent) => {
     const data = event.data;
 
     if (data.type === 'isVisible') {
@@ -16,6 +17,10 @@ const handleMessage = (event: MessageEvent) => {
         if (isVisible.value) {
             router.push({name: 'test'});
         }
+    }
+
+    if(data.type === 'page' && data.value !== '') {
+        router.push({name: data.value as string});
     }
 };
 
@@ -172,7 +177,7 @@ onUnmounted(() => {
                 </a>
                 <a
                     target="_blank"
-                    href="https://discord.gg/2ZS3Yw7k"
+                    href="https://discord.gg/3FjtbxSMNT"
                     class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-md transition-colors flex items-center space-x-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,9 @@
-resource/*
-node_modules
+# ignore files and directories
 .github
+resource/*
 
+# package manager files
+node_modules
+yarn.lock
+bun.lock
+.yarn.installed
