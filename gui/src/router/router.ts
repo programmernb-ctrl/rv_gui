@@ -1,5 +1,6 @@
-import {createRouter, createWebHashHistory } from 'vue-router';
+import {createRouter, createWebHashHistory} from 'vue-router';
 import MainView from '../views/MainView.vue';
+import {defineAsyncComponent} from 'vue';
 
 const routes = [
     {
@@ -10,7 +11,12 @@ const routes = [
     {
         path: '/test',
         name: 'test',
-        component: () => import('../views/TestView.vue'), // Dynamic Import
+        component: defineAsyncComponent(() => import('../views/TestView.vue')), // Dynamic Import
+    },
+    {
+        path: '/hud',
+        name: 'hud',
+        component: defineAsyncComponent(() => import('../views/HudView.vue')),
     },
 ];
 

@@ -1,4 +1,4 @@
-# (WIP) rv_gui
+# (WIP) rv_gui v0.0.2
 
 > [!TIP]
 > Want to join a great upcoming dev community? Make sure you don't miss to join our [Discord](https://discord.gg/3FjtbxSMNT) :)!
@@ -13,17 +13,20 @@
 2. Use the command that you need
 
 ```bash
-pnpm build - build server files
-pnpm build:web - build webview
-pnpm watch - watch server files
-pnpm watch:web - watch webview
-pnpm build:dev - build everything
-pnpm dev - watch everyting
+bun run build - build server files
+bun run build:web - build webview
+bun run watch - watch server files
+bun run watch:web - watch webview
+bun run build:dev - build everything
+bun run dev - watch everyting
 ```
 
-### <ins>Folder Structure<ins>
+## Folder Structure
 
 - rv_gui// root directory of the resource
 - resource// this is where the server will start our resource from. getting created when you build it
 - gui// frontend stuff
 - src// this is where you can write client or serverside code which is later getting compiled to js
+
+## Dependencies
++ [Bun](https://bun.sh/)

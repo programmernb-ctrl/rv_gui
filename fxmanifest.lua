@@ -1,9 +1,11 @@
 name 'Vue+Ts Boilerplate'
 fx_version 'cerulean'
 game 'gta5'
-version '1.0.0'
+version '0.0.2'
 node_version '22'
+lua54 'yes'
 
+use_experimental_fxv2_oal 'yes'
 nui_callback_strict_mode 'true'
 
 author 'thirst'
@@ -17,14 +19,18 @@ server_scripts {
    'resource/server/index.js'
 }
 
+shared_scripts {
+   'resource/common/*.js'
+}
+
 dependencies {
-   '/server:13068',
+   '/server:13943',
 	'/onesync',
 }
 
 files {
    'resource/web/assets/*',
-   'resource/web/*'
+   'resource/web/*',
 }
 
 

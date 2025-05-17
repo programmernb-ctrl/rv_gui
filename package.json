@@ -1,17 +1,17 @@
 {
     "name": "rv_gui",
     "author": "thirst",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "license": "MIT",
     "description": "",
     "type": "module",
     "scripts": {
         "build": "node build.mjs",
-        "build:web": "cd gui && npm run build:web",
-        "build:dev": "pnpm run build && pnpm run build:web",
+        "build:web": "cd gui && bun run build:web",
+        "build:dev": "bun run build && bun run build:web",
         "watch": "node build.mjs --watch",
-        "watch:web": "cd gui && npm run watch",
-        "dev": "concurrently \"pnpm run watch\" \"pnpm run watch:web\""
+        "watch:web": "cd gui && bun run watch",
+        "dev": "concurrently \"bun run watch\" \"bun run watch:web\""
     },
     "keywords": [
         "fivem"
@@ -19,17 +19,17 @@
     "devDependencies": {
         "@citizenfx/client": "latest",
         "@citizenfx/server": "latest",
-        "@types/node": "^22.13.10",
+        "@types/node": "^22.15.18",
         "concurrently": "^9.1.2",
-        "esbuild": "0.25.0",
+        "esbuild": "0.25.4",
         "fast-glob": "3.3.3",
         "prettier": "^3.5.3",
         "typescript": "^5.8.3"
     },
     "dependencies": {
+        "@communityox/ox_lib": "3.30.7",
         "@nativewrappers/fivem": "latest",
-        "@nativewrappers/server": "latest",
-        "@overextended/ox_lib": "^3.30.6"
+        "@nativewrappers/server": "latest"
     },
     "prettier": {
         "printWidth": 120,

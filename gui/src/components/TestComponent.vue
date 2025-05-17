@@ -1,8 +1,24 @@
+<template>
+   <div class="flex w-screen h-screen justify-center items-center">
+      <div class="relative">
+         <!--Outer Div for hud-->
+         <div class="fixed flex flex-nowrap space-x-4 max-w-[25%] w-[25%] h-[5%] max-h-[10%] top-12 left-5 bg-slate-600 rounded-sm ring-red-500 ring-2 ring-offset-2">
+            <div class="flex items-center mx-auto justify-center">
+               {{ formattedPlayer }}
+            </div>
+         </div>
+      </div>
+   </div>
+</template>
+
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, computed } from 'vue';
 import { PlayerData } from '../types/PlayerData';
 import { DResponse } from '../types/DResponse';
+import { cache } from '@communityox/ox_lib';
+import { usePlayerStore } from '../stores/player'
 
+const playerStore = usePlayerStore();
 const playerData = ref<PlayerData>();
 
 const formattedPlayer = computed(() => {
@@ -11,9 +27,28 @@ const formattedPlayer = computed(() => {
    return `ID: ${id}, ${name}, X: ${coords[0]}, Y: ${coords[1]}, Z: ${coords[2]}`;
 })
 
+// Function to update player pinia store
+const updatePlayerStore = (data: PlayerData) => {
+   playerStore.player = data;
+
+   const UpdatePromise = new Promise((resolve) => {
+      setTimeout(() => {
+         console.log('PlayerStore updated with data:', playerStore.player);
+         resolve(true);
+      }, 1000);
+   });
+
+   UpdatePromise.then(() => {
+      console.log('PlayerStore updated successfully!');
+      return true;
+   }).catch((error) => {
+      console.error('Error while updating PlayerStore:', error);
+      return false;
+   });
+}
 
 function _init() {
-   fetch(`https://rv_gui/playerData`, {
+   fetch(`https://${cache.resource}/playerData`, {
       method: 'POST',
       headers: {
          'Content-Type': 'application/json; charset=UTF-8',
@@ -23,7 +58,14 @@ function _init() {
          name: '',
          coords: [0, 0, 0]
       })
-   }).then(resp => resp.json()).then(resp => {
+   })
+   .then(resp => {
+      if (!resp.ok) {
+         throw new Error(`HTTP error! status: ${resp.status}`);
+      }
+      return resp.json();
+   })
+   .then(resp => {
       console.log('Got Response with coords: ', resp?.coords);
 
       let pNewData: DResponse = {
@@ -32,24 +74,29 @@ function _init() {
             name: resp.name,
             coords: resp.coords,
          },
-
          isError: false
-      }
+      };
 
       playerData.value = pNewData.data;
+      playerStore.player = playerData.value;
 
-      // Will work later on this, either i'll use pinia for handling that or web api session storage. Maybe i choose session storage idk :)
-      // here some example sessionStorage.setItem('coordinates', playerData.value.coords.toString());
+      // Example for session storage
+      // sessionStorage.setItem('coordinates', playerData.value.coords.toString());
    })
+   .catch((err) => {
+      console.error('Error while fetching player data:', err.message);
+   });
 }
 
 const PData = (event: MessageEvent) => {
    const data = event.data;
 
    if (data) {
-      switch(data.type) {
+      switch (data.type) {
          case 'playerData':
-            if (typeof data.id === 'number' && typeof data.name === 'string' && typeof data.coords === 'object') {
+            const fullData = typeof data.id === 'number' && typeof data.name === 'string' && typeof data.coords === 'object';
+         
+            if (fullData) {
                let response: DResponse = {
                   data: {
                      id: data.id,
@@ -57,15 +104,18 @@ const PData = (event: MessageEvent) => {
                      coords: data.coords
                   },
                   isError: false,
-               }
-               playerData.value = response.data;
+               };
+               updatePlayerStore(response.data);
+               console.log('PlayerData: ', response.data);
+               return
             } else {
                console.log('Error! Invalid Structure', data);
+               return;
             }
-            break;
+         break;
 
-            default:
-               break;
+         default:
+            break;
       }
    }
 }
@@ -82,20 +132,10 @@ onUnmounted(() => {
 
 </script>
 
-<template>
-   <div class="flex justify-center items-center overflow-hidden">
-      <div class="w-[30%] h-8 bg-emerald-800/30 border-2 border-solid border-emerald-400 overflow-hidden shadow-lg shadow-emerald-400/50">
-         <div class="flex flex-row flex-wrap flex-shrink-1 items-center overflow-hidden w-full">
-             <span id="playerData" class="py-1 text-center text-slate-500 text-ellipsis font-bold tracking-widest w-full">
-                 {{ formattedPlayer }}
-             </span>
-         </div>
-      </div>
-   </div>
-</template>
-
 <style scoped>
 #playerData {
    justify-content: center;
+   text-align: left;
+   font: bold;
 }
 </style>
