@@ -21,9 +21,12 @@ bun run build:dev - build everything
 bun run dev - watch everyting
 ```
 
-### <ins>Folder Structure<ins>
+## Folder Structure
 
 - rv_gui// root directory of the resource
 - resource// this is where the server will start our resource from. getting created when you build it
 - gui// frontend stuff
 - src// this is where you can write client or serverside code which is later getting compiled to js
+
+## Dependencies
++ [Bun](https://bun.sh/)
