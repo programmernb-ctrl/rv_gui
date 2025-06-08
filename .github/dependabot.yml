@@ -18,7 +18,7 @@ updates:
         patterns:
           - "@citizenfx*"
           - "@nativewrappers*"
-          - "@overextended/ox_lib"
+          - "@communityox/ox_lib"
       main-dependencies:
         applies-to: version-updates
         patterns:
