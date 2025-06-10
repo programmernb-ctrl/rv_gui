@@ -2,5 +2,5 @@ import { PlayerData } from './PlayerData'
 
 export interface Message {
    type: string,
-   value: string | string[] | PlayerData
+   value: string | string[] | number | PlayerData
 }
