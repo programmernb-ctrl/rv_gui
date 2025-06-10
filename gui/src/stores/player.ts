@@ -1,10 +1,9 @@
 import {defineStore} from 'pinia';
-import {ref} from 'vue';
 import type {PlayerData} from '@/Types/PlayerData';
 
 export const usePlayerStore = defineStore('user', {
     state: () => ({
-        player: ref<PlayerData>({
+        player: <PlayerData>({
             name: '',
             id: 0,
             coords: [0, 0, 0],
