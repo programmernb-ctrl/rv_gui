@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/Composables/*": ["./src/composables/*"],
+      "@/Components/*": ["./src/components/*"],
+      "@/Types/*": ["./src/types/*"],
+    },
     "target": "ES2021",
     "lib": ["ES2022", "DOM"],
     "module": "ES2022",

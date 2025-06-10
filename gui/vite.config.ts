@@ -1,12 +1,13 @@
-import { fileURLToPath, URL } from 'url';
+import {fileURLToPath, URL} from 'url';
 
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import vue from '@vitejs/plugin-vue';
-import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vite.dev/config/
 export default defineConfig({
     build: {
+        modulePreload: false,
+        cssCodeSplit: true,
         outDir: '../resource/web',
         copyPublicDir: true,
         emptyOutDir: true,
@@ -18,12 +19,13 @@ export default defineConfig({
             output: {
                 assetFileNames: 'assets/[name][extname]',
                 entryFileNames: 'assets/[name].js',
-                chunkFileNames: 'assets/[name]-[hash].js',
+                chunkFileNames: 'assets/[name]_[hash].js',
                 dynamicImportInCjs: true,
                 hoistTransitiveImports: false,
                 interop: 'auto',
                 generatedCode: {
                     constBindings: true,
+                    arrowFunctions: true,
                 },
                 minifyInternalExports: true,
             },
@@ -35,5 +37,8 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
-    plugins: [vue(), vueDevTools()],
+    plugins: [
+        vue(),
+        //vueDevTools()
+    ],
 });
