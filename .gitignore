@@ -1,4 +1,5 @@
 # ignore files and directories
+.vscode
 .github
 resource/*
 
