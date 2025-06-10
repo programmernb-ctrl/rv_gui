@@ -1,64 +1,14 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
-import Tacho from '../components/Tacho.vue';
-import TestComponent from '../components/TestComponent.vue';
+import Tacho from '@/Components/Tacho.vue';
+import TestComponent from '@/Components/TestComponent.vue';
+import {useNotification} from '@/Composables/useNotification'
 
-const vehicleSpeed = ref<number>(0)
-const isInVehicle = ref<boolean>(false)
-
-const PData = (event: MessageEvent) => {
-   const data = event.data;
-
-   if (data) {
-      switch(data.type) {
-         case 'speed':
-            if (typeof data.value === 'number') {
-               let response = {
-                  data: {
-                     speed: data.value
-                  },
-               }
-               vehicleSpeed.value = response.data.speed;
-            } else {
-               console.log('Error! Invalid Structure', data);
-            }
-            break;
-
-         case 'isInVehicle':
-            if (typeof data.value === 'boolean') {
-               let response = {
-                  data: {
-                     inVehicle: data.value
-                  },
-               }
-               isInVehicle.value = response.data.inVehicle;
-            } else {
-               console.log('Error! Invalid Structure', data);
-            }
-            break
-         
-            default:
-               break;
-      }
-   }
-}
-
-onMounted(() => {
-   window.addEventListener('message', PData);
-});
-
-onUnmounted(() => {
-   window.removeEventListener('message', PData);
-});
-
+const notification = useNotification();
 </script>
 
 <template>
-   <div class="flex h-screen w-screen">
+   <div class="flex h-screen w-screen overflow-hidden">
       <TestComponent />
-      <Tacho :show="isInVehicle" :speed="vehicleSpeed" />
+      <Tacho :show="notification.isInVehicle.value" :speed="notification.vehicleSpeed.value" />
    </div>
 </template>
-
-<style scoped>
-</style>
