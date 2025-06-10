@@ -61,10 +61,19 @@ AddStateBagChangeHandler(
             }
         }
 
-        if (typeof statePlayer === 'number' && statePlayer > 0 && key === 'inVehicle' && value === true) {
+        if (key === 'inVehicle' && value === true) {
             if (playerPed?.exists() && playerVehicle?.exists()) {
+                SendNUIMessage({
+                    type: 'isInVehicle',
+                    value: true
+                })
                 runOnTick(playerPed, playerVehicle);
             }
+        } else if (key === 'inVehicle' && value === false) {
+            SendNUIMessage({
+                type: 'isInVehicle',
+                value: false
+            })
         }
     },
 );
