@@ -1,37 +1,28 @@
 <script setup lang="ts">
-import {ref, onMounted, onUnmounted} from 'vue';
+import {ref} from 'vue';
 import {useRouter} from 'vue-router';
-import {MessagesEvent} from '../types/MessageEvent'
-import TestComponent from '../components/TestComponent.vue';
+import {useNui} from '@/Composables/useNui';
+import TestComponent from '@/Components/TestComponent.vue';
 
 const router = useRouter();
+const isVisible = ref<boolean>(false);
 
-const isVisible = ref<boolean | any>(false);
+useNui<boolean>('isVisible', (data) => {
+    isVisible.value = data ?? false;
 
-const handleMessage = (event: MessagesEvent) => {
-    const data = event.data;
-
-    if (data.type === 'isVisible') {
-        isVisible.value = data.value;
-
-        if (isVisible.value) {
-            router.push({name: 'test'});
-        }
+    if (isVisible.value) {
+        router.push({name: 'test'});
     }
-
-    if(data.type === 'page' && data.value !== '') {
-        router.push({name: data.value as string});
-    }
-};
-
-onMounted(() => {
-    window.addEventListener('message', handleMessage);
 });
-
-onUnmounted(() => {
-    window.removeEventListener('message', handleMessage);
+useNui<string | undefined>('page', (data) => {
+    try {
+        router.push({name: data as string});
+    } catch (error) {
+        console.log('Error while listening on page change in webview..', error);
+    }
 });
 </script>
+
 <template>
     <main class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 md:p-8 flex flex-col">
         <div class="max-w-5xl mx-auto flex-1 flex flex-col">
@@ -127,27 +118,27 @@ onUnmounted(() => {
                     <div class="bg-gray-900 p-5 rounded-lg font-mono overflow-x-auto border border-gray-800">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="flex items-center p-2 rounded hover:bg-gray-800 transition-colors">
-                                <code class="text-green-400 mr-3">pnpm build</code>
+                                <code class="text-green-400 mr-3">bun run build</code>
                                 <span class="text-gray-500">build server files</span>
                             </div>
                             <div class="flex items-center p-2 rounded hover:bg-gray-800 transition-colors">
-                                <code class="text-green-400 mr-3">pnpm build:web</code>
+                                <code class="text-green-400 mr-3">bun run build:web</code>
                                 <span class="text-gray-500">build webview</span>
                             </div>
                             <div class="flex items-center p-2 rounded hover:bg-gray-800 transition-colors">
-                                <code class="text-green-400 mr-3">pnpm watch</code>
+                                <code class="text-green-400 mr-3">bun run watch</code>
                                 <span class="text-gray-500">watch server files</span>
                             </div>
                             <div class="flex items-center p-2 rounded hover:bg-gray-800 transition-colors">
-                                <code class="text-green-400 mr-3">pnpm watch:web</code>
+                                <code class="text-green-400 mr-3">bun run watch:web</code>
                                 <span class="text-gray-500">watch webview</span>
                             </div>
                             <div class="flex items-center p-2 rounded hover:bg-gray-800 transition-colors">
-                                <code class="text-green-400 mr-3">pnpm build:dev</code>
+                                <code class="text-green-400 mr-3">bun run build:dev</code>
                                 <span class="text-gray-500">build everything</span>
                             </div>
                             <div class="flex items-center p-2 rounded hover:bg-gray-800 transition-colors">
-                                <code class="text-green-400 mr-3">pnpm dev</code>
+                                <code class="text-green-400 mr-3">bun run dev</code>
                                 <span class="text-gray-500">watch everything</span>
                             </div>
                         </div>
