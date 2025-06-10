@@ -1,141 +1,93 @@
 <template>
-   <div class="flex w-screen h-screen justify-center items-center">
-      <div class="relative">
-         <!--Outer Div for hud-->
-         <div class="fixed flex flex-nowrap space-x-4 max-w-[25%] w-[25%] h-[5%] max-h-[10%] top-12 left-5 bg-slate-600 rounded-sm ring-red-500 ring-2 ring-offset-2">
-            <div class="flex items-center mx-auto justify-center">
-               {{ formattedPlayer }}
+    <div class="flex w-screen h-screen justify-center">
+        <div class="absolute top-12 left-12 flex flex-col gap-4">
+            <!--Outer Div for hud-->
+            <div
+                class="flex flex-wrap w-full top-0 left-0 bg-slate-500/30 ring-2 ring-blue-500 rounded-sm shadow-lg shadow-blue-500/50">
+                <div class="flex px-8 w-full items-center justify-center overflow-hidden">
+                    <p class="font-mono tracking-tighter text-white">{{ formattedPlayer }}</p>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, computed } from 'vue';
-import { PlayerData } from '../types/PlayerData';
-import { DResponse } from '../types/DResponse';
-import { cache } from '@communityox/ox_lib';
-import { usePlayerStore } from '../stores/player'
+import {onMounted, onUnmounted, ref, computed} from 'vue';
+import {useNui} from '../composables/useNui';
+import {fetchNui} from '../lib/fetchNui';
+import {usePlayerStore} from '../stores/player';
+import type {PlayerData} from '@/Types/PlayerData';
 
 const playerStore = usePlayerStore();
 const playerData = ref<PlayerData>();
 
 const formattedPlayer = computed(() => {
-   if (!playerData.value) return '';
-   const { id, name, coords } = playerData.value;
-   return `ID: ${id}, ${name}, X: ${coords[0]}, Y: ${coords[1]}, Z: ${coords[2]}`;
-})
+    if (!playerData.value) return '';
+    const {id, name, coords} = playerData.value ? playerStore.player : playerData.value;
+    return `ID: ${id}, ${name}, X: ${coords[0].toFixed(3)}, Y: ${coords[1].toFixed(3)}, Z: ${coords[2].toFixed(3)}`;
+});
 
 // Function to update player pinia store
-const updatePlayerStore = (data: PlayerData) => {
-   playerStore.player = data;
+const updatePlayerStore = async (data: PlayerData): Promise<PlayerData> => {
+    playerStore.player = data;
 
-   const UpdatePromise = new Promise((resolve) => {
-      setTimeout(() => {
-         console.log('PlayerStore updated with data:', playerStore.player);
-         resolve(true);
-      }, 1000);
-   });
+    const updatePromise = new Promise<PlayerData>((resolve) => {
+        setTimeout(() => {
+            // console.log('PlayerStore updating...');
+            resolve(playerStore.player);
+        }, 1000);
+    });
 
-   UpdatePromise.then(() => {
-      console.log('PlayerStore updated successfully!');
-      return true;
-   }).catch((error) => {
-      console.error('Error while updating PlayerStore:', error);
-      return false;
-   });
+    return updatePromise
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            console.error('Error while trying to update Player Store:', error);
+            throw error;
+        });
+};
+
+async function _init() {
+    const data = await fetchNui('playerData', {});
+
+    if (!data) return;
+
+    let pNewData: PlayerData = {
+        id: data.value.id,
+        name: data.value.name,
+        coords: data.value.coords,
+    };
+
+    playerData.value = pNewData;
+    updatePlayerStore(playerData.value as PlayerData);
+
+    // Example for session storage
+    // sessionStorage.setItem('coordinates', playerData.value.coords.toString());
 }
 
-function _init() {
-   fetch(`https://${cache.resource}/playerData`, {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: JSON.stringify({
-         id: 0,
-         name: '',
-         coords: [0, 0, 0]
-      })
-   })
-   .then(resp => {
-      if (!resp.ok) {
-         throw new Error(`HTTP error! status: ${resp.status}`);
-      }
-      return resp.json();
-   })
-   .then(resp => {
-      console.log('Got Response with coords: ', resp?.coords);
-
-      let pNewData: DResponse = {
-         data: {
-            id: resp.id,
-            name: resp.name,
-            coords: resp.coords,
-         },
-         isError: false
-      };
-
-      playerData.value = pNewData.data;
-      playerStore.player = playerData.value;
-
-      // Example for session storage
-      // sessionStorage.setItem('coordinates', playerData.value.coords.toString());
-   })
-   .catch((err) => {
-      console.error('Error while fetching player data:', err.message);
-   });
-}
-
-const PData = (event: MessageEvent) => {
-   const data = event.data;
-
-   if (data) {
-      switch (data.type) {
-         case 'playerData':
-            const fullData = typeof data.id === 'number' && typeof data.name === 'string' && typeof data.coords === 'object';
-         
-            if (fullData) {
-               let response: DResponse = {
-                  data: {
-                     id: data.id,
-                     name: data.name,
-                     coords: data.coords
-                  },
-                  isError: false,
-               };
-               updatePlayerStore(response.data);
-               console.log('PlayerData: ', response.data);
-               return
-            } else {
-               console.log('Error! Invalid Structure', data);
-               return;
-            }
-         break;
-
-         default:
-            break;
-      }
-   }
-}
+useNui<PlayerData>('playerData', (data) => {
+    playerStore.$state.player = {
+        id: data.id ?? 0,
+        name: data.name,
+        coords: data.coords,
+    };
+});
 
 onMounted(() => {
-   _init();
-   window.addEventListener('message', PData);
+    _init();
 });
 
 onUnmounted(() => {
-   window.removeEventListener('message', PData);
-   sessionStorage.clear();
+    sessionStorage.clear();
 });
-
 </script>
 
 <style scoped>
 #playerData {
-   justify-content: center;
-   text-align: left;
-   font: bold;
+    justify-content: center;
+    text-align: left;
+    font: bold;
 }
 </style>
