@@ -1,20 +1,31 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import { PlayerData } from '../types/PlayerData';
+import {defineStore} from 'pinia';
+import type {PlayerData} from '@/Types/PlayerData';
 
-export const usePlayerStore = defineStore('user', () => {
-   const player = ref<PlayerData>({
-      name: '',
-      id: 0,
-      coords: [0, 0, 0]
-   });
+export const usePlayerStore = defineStore('user', {
+    state: () => ({
+        player: <PlayerData>({
+            name: '',
+            id: 0,
+            coords: [0, 0, 0],
+        }),
+    }),
 
-   const setPlayer = (newPlayer: PlayerData) => {
-      player.value = newPlayer;
-   };
+    getters: {
+        getAll: (state) => {
+            return state.player
+        }
+    },
 
-   return {
-      player,
-      setPlayer,
-   }
+    actions: {
+        $setPlayer(player: PlayerData): void {
+            this.player = player;
+        },
+        $reset(): void {
+            this.player = {
+                id: 0,
+                name: '',
+                coords: [0, 0, 0],
+            };
+        },
+    },
 });

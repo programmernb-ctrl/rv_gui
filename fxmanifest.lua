@@ -1,7 +1,7 @@
 name 'Vue+Ts Boilerplate'
 fx_version 'cerulean'
 game 'gta5'
-version '0.0.2'
+version '0.0.3'
 node_version '22'
 lua54 'yes'
 

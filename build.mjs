@@ -18,7 +18,7 @@ async function buildFiles() {
         {
             label: 'client',
             platform: 'browser',
-            target: ['chrome97'],
+            target: ['chrome103'],
             entryPoints: globSync('./src/client/index.ts'),
             format: 'iife',
         },
@@ -32,7 +32,7 @@ async function buildFiles() {
         {
             label: 'common',
             platform: 'browser',
-            target: ['chrome97'],
+            target: ['chrome103'],
             entryPoints: globSync('./src/common/*.ts'),
             format: 'iife',
         }
