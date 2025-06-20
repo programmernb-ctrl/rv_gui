@@ -19,7 +19,7 @@
     "devDependencies": {
         "@citizenfx/client": "latest",
         "@citizenfx/server": "latest",
-        "@types/node": "^22.15.18",
+        "@types/node": "^24.0.3",
         "concurrently": "^9.1.2",
         "esbuild": "0.25.4",
         "fast-glob": "3.3.3",
