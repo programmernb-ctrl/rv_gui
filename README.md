@@ -1,4 +1,4 @@
-# (WIP) rv_gui v0.0.2
+# (WIP) rv_gui v0.0.3
 
 > [!TIP]
 > Want to join a great upcoming dev community? Make sure you don't miss to join our [Discord](https://discord.gg/3FjtbxSMNT) :)!
