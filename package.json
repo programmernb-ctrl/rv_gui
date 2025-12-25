@@ -27,7 +27,7 @@
         "typescript": "^5.8.3"
     },
     "dependencies": {
-        "@communityox/ox_lib": "3.31.3",
+        "@communityox/ox_lib": "3.31.4",
         "@nativewrappers/fivem": "latest",
         "@nativewrappers/server": "latest"
     },
